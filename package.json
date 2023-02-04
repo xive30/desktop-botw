@@ -18,7 +18,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "hyrule-compendium": "^1.5.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.4",
