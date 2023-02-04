@@ -23,10 +23,10 @@ function displayMaterials(materials) {
     const materialToString = materials[0]
     .map((material) => 
         `
-        <div>
+        <div class="card">
             <h3>${material.name}</h3>
-            <p>${material.cooking_effect}</p>
-            <p>${material.description}</p>
+            <p><span class="underlined">Description</span> : ${material.description}</p>
+            <p><span class="underlined"> Cooking effect</span> : ${material.cooking_effect}</p>
             <img src="${material.image}" alt="">
         </div>
         `
