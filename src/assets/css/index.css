@@ -2,14 +2,94 @@ body {
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(145, 145, 145, 0.838)),url("../images/bg-link.gif");
   background-size: auto 100%;
   background-attachment: fixed;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+  }
+  
+  .container .navigation {
+    width: 270px;
+  display: grid;
+  align-content: space-evenly;
+  /* background-color: #fff; */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s;
 }
 
-.container {
+.container .navigation a {
+  display: flex;
+  text-decoration: none;
+  color: #128a12;
+  font-weight: 600;
+  margin: 1em;
+}
+
+.container .navigation a:hover {
+  background: #efefef;
+}
+
+.container .navigation .icon {
+  min-width: 70px;
+  text-align: center;
+  height: 60px;
+  line-height: 70px;
+}
+
+.container .navigation a .title {
+  height: 60px;
+  line-height: 60px;
+  transition: 0.5s;
+}
+
+.toggle {
+  position: absolute;
+  right: -55px;
+  top: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  cursor: pointer;
+  border: 5px solid #128a12;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle p {
+  font-size: xx-large;
+  line-height: 16px;
+  color: #128a12;
+  align-self: center;
+}
+
+.container .navigation.active {
+  width: 80px;
+}
+
+.container .navigation.active a .title{
+  opacity: 0;
+}
+
+.toggle.active p {
+  transform: rotate(180deg);
+}
+
+.main {
+  /* margin: auto;
+  padding: 2rem; */
   align-items: center;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
 }
 
 .logo{
@@ -17,6 +97,7 @@ body {
   margin: 30px;
   justify-content: center;
 }
+
 .list-card {
   display: flex;
   flex-direction: row;
@@ -33,6 +114,10 @@ body {
   padding: 1rem;
   margin: 2rem;
   box-shadow: -1em 1em 1.4em black;
+}
+
+.content {
+  padding-left: 5rem;
 }
 
 .card h3 {

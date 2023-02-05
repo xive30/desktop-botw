@@ -25,8 +25,6 @@ function displayMaterials(materials) {
         `
         <div class="card">
             <h3>${material.name}</h3>
-            <p><span class="underlined">Description</span> : ${material.description}</p>
-            <p><span class="underlined"> Cooking effect</span> : ${material.cooking_effect}</p>
             <img src="${material.image}" alt="">
         </div>
         `
@@ -37,3 +35,5 @@ function displayMaterials(materials) {
 
 fetchMaterials();
 
+{/* <p><span class="underlined">Description</span> : ${material.description}</p>
+            <p><span class="underlined"> Cooking effect</span> : ${material.cooking_effect}</p> */}
