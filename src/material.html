@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Hyrule Compodium - Materials</title>
+		<link rel="stylesheet" href="./assets/css/index.css" />
+		<script src="./assets/js/category.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="navigation">
+				<a href="./creature.html">
+					<img
+						src="./assets/images/creature.png"
+						class="icon"
+						alt="Creatures"
+					/>
+					<span class="title">Creatures</span>
+				</a>
+				<a href="./equipment.html">
+					<img
+						src="./assets/images/equipement.png"
+						class="icon"
+						alt="Equipements"
+					/>
+					<span class="title">Equipements</span>
+				</a>
+				<a href="./material.html">
+					<img
+						src="./assets/images/Hylian_Shroom.png"
+						class="icon"
+						alt="Materials"
+					/>
+					<span class="title">Materials</span>
+				</a>
+				<a href="./monster.html">
+					<img
+						src="./assets/images/BotW_Black_Bokoblin_Model.webp"
+						class="icon"
+						alt="Monsters"
+					/>
+					<span class="title">Monsters</span>
+				</a>
+				<a href="./treasure.html">
+					<img
+						src="./assets/images/treasure_chest.png"
+						class="icon"
+						alt="Treasures"
+					/>
+					<span class="title">Treasures</span>
+				</a>
+			</div>
+			<div class="toggle">
+				<p>></p>
+			</div>
+		</div>
+
+		<div class="main">
+			<div>
+				<a href="./index.html">
+					<img
+						src="./assets/images/1200px-The_Legend_of_Zelda_Breath_of_the_Wild_Logo.png"
+						class="logo"
+						alt=""
+					/>
+				</a>
+				<h1>Hyrule Compodium <span id="version"></span></h1>
+			</div>
+
+			<div class="content">
+				<h2 class="underlined">Materials</h2>
+				<ul id="Category" class="list-card"></ul>
+			</div>
+		</div>
+
+		<script>
+            fetchCategory("materials");
+			const navigation = document.querySelector(".navigation");
+			document.querySelector(".toggle").onclick = function () {
+				this.classList.toggle("active");
+				navigation.classList.toggle("active");
+			};
+		</script>
+	</body>
+</html>
