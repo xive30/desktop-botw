@@ -25,11 +25,12 @@ function displaycategories(categories) {
         <div class="card">
             <h3>${element.name}</h3>
             <img src="${element.image}" alt="">
+			<a href="entry.html?${element.id}"><p>see more ...</p></a>
         </div>
         `
 		)
 		.join("");
-	console.log(materialToString);
+	// console.log(materialToString);
 	Category.innerHTML = materialToString;
 }
 
@@ -41,6 +42,7 @@ function displayCreatures(CategoryCreatures){
         <div class="card">
             <h3>${element.name}</h3>
             <img src="${element.image}" alt="">
+			<a href="entry.html?${element.id}"><p>see more ...</p></a>
         </div>
         `
 		)
@@ -52,6 +54,7 @@ function displayCreatures(CategoryCreatures){
         <div class="card">
             <h3>${element.name}</h3>
             <img src="${element.image}" alt="">
+			<a href="entry.html?${element.id}"><p>see more ...</p></a>
         </div>
         `
 		)

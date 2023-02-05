@@ -106,14 +106,31 @@ h1 {
 }
 .card {
   max-width: 35rem;
-  background-color: darkgreen;
+  background-color: rgba(0, 100, 0, 0.5);
   color: white;
   text-align: center;
   border-radius: 1em;
-  border: 5px dashed crimson;
+  border: 5px solid black;
   padding: 1rem;
   margin: 2rem;
   box-shadow: -1em 1em 1.4em black;
+}
+
+.main-card {
+  max-width: 80%;
+  background-color: rgba(0, 100, 0, 0.5);
+  color: white;
+  text-align: center;
+  border-radius: 1em;
+  border: 3px solid rgb(0, 0, 0);
+  padding: 2rem;
+  margin: 50px;
+  box-shadow: -1em 1em 1.4em black;
+}
+
+.att-def {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .content {
