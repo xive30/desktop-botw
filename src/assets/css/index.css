@@ -5,7 +5,22 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
   display: flex;
-  height: 100vh;
+  height: 1000px;
+  }
+
+  #notification {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .hidden {
+    display: none;
   }
 
   .container {
@@ -82,8 +97,11 @@ body {
 }
 
 .main {
-  /* margin: auto;
-  padding: 2rem; */
+  margin: auto;
+  margin-bottom: 10rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 

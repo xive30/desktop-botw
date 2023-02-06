@@ -10,7 +10,11 @@ async function fetchEntry(id) {
 			console.log(entry);
 			switch (entry.category) {
 				case "creatures":
-					displayCreatures(entry);
+                    if (entry.cooking_effect == undefined){
+                        displayMonsters(entry);
+                    } else {
+                        displayCreatures(entry);
+                    }
 					break;
 				case "equipment":
                     console.log(entry)

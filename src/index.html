@@ -1,69 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hyrule Compodium</title>
-    <link rel="stylesheet" href="./assets/css/index.css" />
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Hyrule Compodium</title>
+		<link rel="stylesheet" href="./assets/css/index.css" />
+	</head>
 
-  <body>
-    <div class="container">
-      <div class="navigation">
-        <a href="./creature.html">
-          <img src="./assets/images/creature.png" class="icon" alt="Creatures">
-          <span class="title">Creatures</span>
-        </a>
-        <a href="./equipment.html">
-          <img src="./assets/images/equipement.png" class="icon" alt="Equipements">
-          <span class="title">Equipements</span>
-        </a>
-        <a href="./material.html">
-          <img src="./assets/images/Hylian_Shroom.png" class="icon" alt="Materials">
-          <span class="title">Materials</span>
-        </a>
-        <a href="./monster.html">
-          <img src="./assets/images/BotW_Black_Bokoblin_Model.webp" class="icon" alt="Monsters">
-          <span class="title">Monsters</span>
-        </a>
-        <a href="./treasure.html">
-          <img src="./assets/images/treasure_chest.png" class="icon" alt="Treasures">
-          <span class="title">Treasures</span>
-        </a>
-      </div>
-      <div class="toggle">
-        <p>></p>
-      </div>
-    </div>
+	<body>
+		<div class="container">
+			<div class="navigation">
+				<a href="./creature.html">
+					<img
+						src="./assets/images/creature.png"
+						class="icon"
+						alt="Creatures"
+					/>
+					<span class="title">Creatures</span>
+				</a>
+				<a href="./equipment.html">
+					<img
+						src="./assets/images/equipement.png"
+						class="icon"
+						alt="Equipements"
+					/>
+					<span class="title">Equipements</span>
+				</a>
+				<a href="./material.html">
+					<img
+						src="./assets/images/Hylian_Shroom.png"
+						class="icon"
+						alt="Materials"
+					/>
+					<span class="title">Materials</span>
+				</a>
+				<a href="./monster.html">
+					<img
+						src="./assets/images/BotW_Black_Bokoblin_Model.webp"
+						class="icon"
+						alt="Monsters"
+					/>
+					<span class="title">Monsters</span>
+				</a>
+				<a href="./treasure.html">
+					<img
+						src="./assets/images/treasure_chest.png"
+						class="icon"
+						alt="Treasures"
+					/>
+					<span class="title">Treasures</span>
+				</a>
+			</div>
+			<div class="toggle">
+				<p>></p>
+			</div>
+		</div>
 
-    <div class="main">
-      <div>
-        <a href="./index.html">
-          <img src="./assets/images/1200px-The_Legend_of_Zelda_Breath_of_the_Wild_Logo.png" class="logo" alt="">
-        </a>
-        <h1>Hyrule Compodium <span id="version"></span></h1>
-      </div>
+		<div class="main">
+			<div>
+				<a href="./index.html">
+					<img
+						src="./assets/images/1200px-The_Legend_of_Zelda_Breath_of_the_Wild_Logo.png"
+						class="logo"
+						alt=""
+					/>
+				</a>
+				<h1>Hyrule Compodium <span id="version"></span></h1>
+			</div>
 
-      <div class="content">
-        <p>Bonjour, <br>Welcome to the Compodium <br><br>Here you can find : </p>
-        <ul>
-          <li>Creatures</li>
-          <li>Equipements</li>
-          <li>Materials</li>
-          <li>Monsters</li>
-          <li>Treasures</li>
-        </ul>
-      </div>
-    </div>
+			<div class="content">
+				<p>
+					Bonjour, <br />Welcome to the Compodium <br /><br />Here you can find
+					:
+				</p>
+				<ul>
+					<li>Creatures</li>
+					<li>Equipements</li>
+					<li>Materials</li>
+					<li>Monsters</li>
+					<li>Treasures</li>
+				</ul>
+				<p>or search by name :</p>
+				<form action="entry.html">
+					<input type="text" id="valueName" required />
+					<button type="submit">Search</button>
+				</form>
+			</div>
+		</div>
 
-    <script>
+		<div id="notification" class="hidden">
+			<p id="message"></p>
+			<button id="close-button" onClick="closeNotification()">Close</button>
+			<button id="restart-button" onClick="restartApp()" class="hidden">
+				Restart
+			</button>
+		</div>
 
-      const navigation = document.querySelector('.navigation');
-      document.querySelector('.toggle').onclick = function () {
-        this.classList.toggle('active')
-        navigation.classList.toggle('active')
+		<script>
+			//Navigation
+			const navigation = document.querySelector(".navigation");
+			document.querySelector(".toggle").onclick = function () {
+				this.classList.toggle("active");
+				navigation.classList.toggle("active");
+			};
+
+			//Notification
+			const notification = document.getElementById("notification");
+			const message = document.getElementById("message");
+			const restartButton = document.getElementById("restart-button");
+			ipcRenderer.on("update_available", () => {
+				ipcRenderer.removeAllListeners("update_available");
+				message.innerText = "A new update is available. Downloading now...";
+				notification.classList.remove("hidden");
+			});
+			ipcRenderer.on("update_downloaded", () => {
+				ipcRenderer.removeAllListeners("update_downloaded");
+				message.innerText =
+					"Update Downloaded. It will be installed on restart. Restart now?";
+				restartButton.classList.remove("hidden");
+				notification.classList.remove("hidden");
+			});
+
+      function closeNotification() {
+        notification.classList.add('hidden');
+      }
+      function restartApp() {
+        ipcRenderer.send('restart_app');
       }
 
-    </script>
-    
-  </body>
+			// version of the app
+			const { ipcRenderer } = require("electron");
+			const version = document.getElementById("version");
+			ipcRenderer.send("app_version");
+			ipcRenderer.on("app_version", (event, arg) => {
+				ipcRenderer.removeAllListeners("app_version");
+				version.innerText = "Version " + arg.version;
+			});
+
+			// Search
+			const entryName = document.getElementById("valueName");
+			const form = entryName.form;
+			form.onsubmit = function () {
+				window.location.href = `entry.html?${entryName.value}`;
+				return false;
+			};
+		</script>
+	</body>
 </html>
