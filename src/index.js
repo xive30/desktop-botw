@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, Notification } = require('electron');
 const path = require('path');
 const { autoUpdater } = require('electron-updater');
-const sqlite3 = require('sqlite3').verbose();
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
