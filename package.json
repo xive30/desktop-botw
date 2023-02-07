@@ -1,7 +1,7 @@
 {
   "name": "botw",
   "productName": "botw",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
