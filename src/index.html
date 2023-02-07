@@ -64,14 +64,28 @@
 						alt=""
 					/>
 				</a>
+
+        <audio controls autoplay loop>
+          <source src="./assets/audio/Zelda_ Breath of the Wild - Main Menu.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
 				<h1>Hyrule Compodium <span id="version"></span></h1>
 			</div>
 
+      <div>
+        <img src="./assets/images/Goron.webp"  class="hidden goron" id="goron" alt="Goron">
+      </div>
+      <span id="output">hi!</span>
 			<div class="content">
 				<p>
-					Bonjour, <br />Welcome to the Compodium <br /><br />Here you can find
-					:
+					Welcome to the Compodium of Breath of the wild. Here you can : 
 				</p>
+        <p>Search <strong>by name</strong> :</p>
+        <form action="entry.html">
+          <input type="text" id="valueName" required />
+          <button type="submit">Search</button>
+        </form>
+        Or <strong>by Category</strong>:
 				<ul>
 					<li>Creatures</li>
 					<li>Equipements</li>
@@ -79,11 +93,6 @@
 					<li>Monsters</li>
 					<li>Treasures</li>
 				</ul>
-				<p>or search by name :</p>
-				<form action="entry.html">
-					<input type="text" id="valueName" required />
-					<button type="submit">Search</button>
-				</form>
 			</div>
 		</div>
 
@@ -110,6 +119,18 @@
 				window.location.href = `entry.html?${entryName.value}`;
 				return false;
 			};
+
+      // test My Notification
+      const NOTIFICATION_TITLE = 'Welcome'
+      const NOTIFICATION_BODY = 'Click to say Hello world.'
+      const CLICK_MESSAGE = "Hello world!";
+
+      new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
+        .onclick = () => {
+          document.getElementById("output").innerText = CLICK_MESSAGE,
+          document.getElementById("output").classList.add('hello')
+          document.getElementById("goron").classList.remove('hidden')
+        }
 		</script>
 	</body>
 </html>
